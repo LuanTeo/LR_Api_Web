@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lr Informática</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../images/titlePageicon.png"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Inportação e configuração da fonte Inter -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      ul.custom-list li {
+        /* Define o tamanho da imagem usando background-size */
+        background-image: url("https://www.svgrepo.com/show/401060/computer-desk-furniture-office-table.svg");
+        background-size: 20px 20px; /* Tamanho desejado */
+        background-repeat: no-repeat;
+        background-position: 0 0.4em;
+        padding-left: 30px; /* Ajusta o espaçamento do texto */
+        list-style-type: none; /* Remove o estilo de lista padrão */
+      }
+      ul.custom-list-pc li {
+        /* Define o tamanho da imagem usando background-size */
+        background-image: url("https://cdn-icons-png.flaticon.com/128/2778/2778996.png");
+        background-size: 20px 20px; /* Tamanho desejado */
+        background-repeat: no-repeat;
+        background-position: 0 0.4em;
+        padding-left: 30px; /* Ajusta o espaçamento do texto */
+        list-style-type: none; /* Remove o estilo de lista padrão */
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 font-inter transition-all">
+    <!-- Navbar -->
+    <nav
+      class="bg-[#2A3DA4] py-0 px-3 flex flex-row gap-32 max-[1000px]:gap-16 w-full justify-between items-center"
+    >
+      <!-- Botão para abrir o offcanvas -->
+      <div class="flex flex-row items-center gap-8">
+        <button id="openCanvas" class="text-white focus:outline-none">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-menu w-8 h-10"
+          >
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="18" y2="18" />
+          </svg>
+        </button>
+        <img
+          src="../images/titlePage.png"
+          class="w-full p-0 m-0"
+          onclick="window.location.href='../index.html';"
+        />
+      </div>
+      <div class="w-full text-[#2A3DA4] flex justify-center">
+        <div
+          class="relative flex flex-row items-center w-[480px] max-[1000px]:w-full"
+        >
+          <input
+            class="rounded h-8 pl-6 pr-8 text-xs w-full"
+            type="search"
+            value=""
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-search absolute right-2 shadow-black shadow-xl"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+        </div>
+        <!-- icon favorite-->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="white"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-heart self-center w-8 h-8 ml-3 hover:fill-[#F9531F] hover:stroke-[#F9531F]"
+          onclick="window.location.href='../pages/favorites.html';"
+        >
+          <path
+            d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+          />
+        </svg>
+      </div>
+      <div class="flex flex-row justify-center gap-5 text-white">
+        <!--icon carrinho/Shop -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="white"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-shopping-cart w-8"
+          onclick="window.location.href='../pages/carinho.html';"
+        >
+          <circle cx="8" cy="21" r="1" />
+          <circle cx="19" cy="21" r="1" />
+          <path
+            d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"
+          />
+        </svg>
+        <!-- icon user -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="white"
+          stroke="#ffffff"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-user-round w-10 border-2 border-white rounded-full p-1"
+        >
+          <circle cx="12" cy="8" r="5" />
+          <path d="M20 21a8 8 0 0 0-16 0" />
+        </svg>
+      </div>
+    </nav>
+
+    <!-- Overlay (escurecimento de fundo) -->
+    <div
+      id="overlay"
+      class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"
+    ></div>
+
+    <!-- Offcanvas -->
+    <div
+      id="offcanvas"
+      class="fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-[#2A3DA4] to-transparent shadow-lg transform -translate-x-full transition-transform z-50"
+    >
+      <div class="p-4">
+        <div class="flex flex-row gap-12">
+          <button id="closeCanvas" class="text-white focus:outline-none">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              class="bi bi-arrow-left w-8"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M15 8a.5.5 0 0 1-.5.5H4.707l3.147 3.146a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L4.707 7.5H14.5A.5.5 0 0 1 15 8z"
+              />
+            </svg>
+          </button>
+          <button
+            class="bg-white w-2/3 text-[#2A3DA4] border-2 border-transparent font-semibold px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-transparent hover:text-white hover:border-white"
+            onclick="window.location.href='../pages/login.html';"
+          >
+            LOGIN
+          </button>
+        </div>
+
+        <!-- Itens do menu -->
+        <ul class="mt-6">
+          <li>
+            <a
+              href="../index.html"
+              class="block m-2 p-1 bg-white text-[#2A3DA4] border-2 border-transparent font-semibold px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-transparent hover:text-white hover:border-white"
+              >PAGINA INICIAL</a
+            >
+          </li>
+          <li>
+            <a
+              href="../pages/favorites.html"
+              class="block m-2 p-1 bg-white text-[#2A3DA4] border-2 border-transparent font-semibold px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-transparent hover:text-white hover:border-white"
+              >FAVORITOS</a
+            >
+          </li>
+          <li>
+            <a
+              href="../pages/sobreNos.html"
+              class="block m-2 p-1 bg-white text-[#2A3DA4] border-2 border-transparent font-semibold px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-transparent hover:text-white hover:border-white"
+              >SOBRE NÓS</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <section
+      class="w-full h-fit flex flex-col justify-start items-start p-5"
+      id="sessao1"
+    >
+      <div class="w-full flex">
+        <div class="w-3/5 space-y-5">
+          <div class="relative w-full">
+            <!-- icon favorite-->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-heart w-12 ml-3 mt-3 hover:fill-[#F9531F] hover:stroke-[#F9531F] absolute"
+              onclick=""
+            >
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+              />
+            </svg>
+            <img
+              src="../images/image-3-gamer.png"
+              alt=""
+              class="w-full rounded-2xl"
+            />
+          </div>
+          <div
+            class="h-36 bg-gray-200 rounded-xl flex justify-evenly items-center"
+          >
+            <div class="flex flex-col h-3/4 max-[450px]:w-2/6 w-4/6 p-3">
+              <p class="text-[#F9531F] font-bold opacity-85 line-through">
+                R$ 5.320,00
+              </p>
+              <p
+                class="text-green-500 text-4xl font-bold"
+                style="text-shadow: 2px 2px 5px #2a3da4"
+              >
+                R$ 4.999,99
+              </p>
+            </div>
+            <div class="flex flex-col gap-4">
+              <button
+                type="button"
+                class="bg-gradient-to-r from-[#2a3da4] to-[#000699] hover:from-[#8CD6FF] hover:to-[#C1C0FF] rounded-3xl h-12 py-2 px-2 text-white font-bold text-wrap text-sm w-48 flex items-center justify-center gap-3 shadow-black shadow-[1px_2px_10px]"
+                style="text-shadow: 2px 2px 3px #2a3da4"
+              >
+                COMPRAR
+                <svg
+                  version="1.1"
+                  id="Uploaded to svgrepo.com"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 32 32"
+                  xml:space="preserve"
+                  fill="currentColor"
+                  class="w-6"
+                  onclick="window.location.href='../pages/pagamento.html';"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M27.857,27.864C27.935,29.572,26.571,31,24.861,31H7.139c-1.71,0-3.075-1.428-2.997-3.136L4.957,9.955 C4.981,9.42,5.421,9,5.956,9h20.089c0.535,0,0.975,0.42,0.999,0.955L27.857,27.864z M16.185,1.003C12.787,0.901,10,3.625,10,7v1h2V7 c0-2.209,1.791-4,4-4s4,1.791,4,4v1h2V7.252C22,3.966,19.468,1.101,16.185,1.003z"
+                    ></path>
+                  </g>
+                </svg>
+              </button>
+              <button
+                type="button"
+                class="bg-gradient-to-r from-[#2a3da4] to-[#000699] hover:from-[#8CD6FF] hover:to-[#C1C0FF] rounded-3xl h-12 py-2 px-2 text-white font-bold text-wrap text-sm w-48 flex items-center justify-center gap-3 shadow-black shadow-[1px_2px_10px]"
+                style="text-shadow: 2px 2px 3px #2a3da4"
+              >
+                ADICIONAR AO CARRINHO
+                <svg
+                  version="1.1"
+                  id="Layer_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 32 32"
+                  xml:space="preserve"
+                  fill="currentColor"
+                  class="w-10"
+                  onclick="window.location.href='../pages/carinho.html';"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <circle
+                      style="
+                        fill: none;
+                        stroke: currentColor;
+                        stroke-width: 2;
+                        stroke-miterlimit: 10;
+                      "
+                      cx="22"
+                      cy="24"
+                      r="2"
+                    ></circle>
+                    <circle
+                      style="
+                        fill: none;
+                        stroke: currentColor;
+                        stroke-width: 2;
+                        stroke-miterlimit: 10;
+                      "
+                      cx="13"
+                      cy="24"
+                      r="2"
+                    ></circle>
+                    <path
+                      d="M25.658,10l-2.422,9H10.781L8.159,8.515C7.937,7.625,7.137,7,6.219,7H4C3.448,7,3,7.448,3,8c0,0.552,0.448,1,1,1h2.219 l2.621,10.485C9.063,20.375,9.863,21,10.781,21h12.455c0.902,0,1.692-0.604,1.93-1.474L27.764,10H25.658z"
+                    ></path>
+                    <line
+                      style="
+                        fill: none;
+                        stroke: currentColor;
+                        stroke-width: 2;
+                        stroke-miterlimit: 10;
+                      "
+                      x1="17"
+                      y1="7"
+                      x2="17"
+                      y2="13"
+                    ></line>
+                    <polygon points="21,12 17,16 13,12 "></polygon>
+                  </g>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="w-2/5 flex justify-center">
+          <div
+            class="w-4/5 h-[820px] text-wrap bg-gray-200 rounded-lg overflow-y-scroll"
+          >
+            <p
+              class="text-3xl font-bold w-full text-center py-5"
+              style="text-shadow: 2px 3px 5px #2a3da4"
+            >
+              SETUP GAMER
+            </p>
+            <p class="w-full px-2 text-justify"></p>
+            <ul class="list-inside px-2 py-5 custom-list">
+              <li>
+                <p class="font-semibold">MONITOR:</p>
+                1x AOC, 24G2/BK, Monitor Gamer Hero 24" 144Hz IPS 1ms AMD
+                FreeSync 24G2, COR PRETA/VERMELHA<br />
+                <p class="font-semibold">COMPRE SEPARADO:</p>
+                <a class="text-[#2a3da4] font-medium hover:underline" href="#">
+                  Monitor AOC - Amazon</a
+                >
+              </li>
+              <li>
+                <p class="font-semibold">TECLADO:</p>
+                1x Teclado Mecânico Gamer HyperX Alloy MKW100, RGB, Switch Red,
+                Full Size, US, Preto <br />
+                <p class="font-semibold">COMPRE SEPARADO:</p>
+                <a class="text-[#2a3da4] font-medium hover:underline" href="#">
+                  Teclado Hyperx- Kabum</a
+                >
+              </li>
+              <li>
+                <p class="font-semibold">MOUSE:</p>
+                1x Mouse Gamer Marvo M519, 12000 Dpi, 8 Botões, RGB, Black
+                <br />
+                <p class="font-semibold">COMPRE SEPARADO:</p>
+                <a class="text-[#2a3da4] font-medium hover:underline" href="#">
+                  Mouse Marvo - Kabum</a
+                >
+              </li>
+              <li>
+                <p class="font-semibold">MOUSE PAD:</p>
+                1x Mouse Pad Multilaser Gamer Warrior Ac302 <br />
+                <p class="font-semibold">COMPRE SEPARADO:</p>
+                <a class="text-[#2a3da4] font-medium hover:underline" href="#">
+                  Mouse pad - AliExpress</a
+                >
+              </li>
+              <li>
+                <p class="font-semibold">GABINETE:</p>
+                1x GAMDIAS Gabinete Gamer Talos E1 , Preto <br />
+                <p class="font-semibold">COMPRE SEPARADO:</p>
+                <a class="text-[#2a3da4] font-medium hover:underline" href="#">
+                  Gabinete Gamdias - Amazon</a
+                >
+              </li>
+              <li>
+                <p class="font-semibold">CONFIGURAÇÕES DO PC</p>
+                <ul class="custom-list-pc">
+                  <li>
+                    <p class="font-semibold">Processador:</p>
+                    1x Processador Intel Core I5-12400F 2.5GHZ (Turbo 4.4GHZ)
+                    Cache 18MB 6 Núcleos 12 Threads 12ª Ger LGA 1700
+                    BX8071512400F - Intel <br />
+                    <p class="font-semibold">COMPRE SEPARADO:</p>
+                    <a
+                      class="text-[#2a3da4] font-medium hover:underline"
+                      href="#"
+                    >
+                      Processador intel - Amazon
+                    </a>
+                  </li>
+                  <li>
+                    <p class="font-semibold">Placa-Mãe:</p>
+                    1x Placa Mãe Gigabyte H610M (rev. 1.0), Intel LGA1700, H610,
+                    DDR4, mATX - H610M H DDR4<br />
+                    <p class="font-semibold">COMPRE SEPARADO:</p>
+                    <a
+                      class="text-[#2a3da4] font-medium hover:underline"
+                      href="#"
+                    >
+                      Placa mae - Kabum
+                    </a>
+                  </li>
+                  <li>
+                    <p class="font-semibold">Memória RAM:</p>
+                    1x Memória RAM XPG Gammix D35, 8GB, 3200MHz, DDR4, CL16,
+                    Preto - AX4U32008G16A-SBKD35<br />
+                    <p class="font-semibold">COMPRE SEPARADO:</p>
+                    <a
+                      class="text-[#2a3da4] font-medium hover:underline"
+                      href="#"
+                    >
+                      Memoria ram - Kabum
+                    </a>
+                  </li>
+                  <li>
+                    <p class="font-semibold">SSD:</p>
+                    1x SSD SATA Lexar, 480GB, 2.5", Leitura 550MB/s, Cinza -
+                    LNQ100X480G-RNNNU<br />
+                    <p class="font-semibold">COMPRE SEPARADO:</p>
+                    <a
+                      class="text-[#2a3da4] font-medium hover:underline"
+                      href="#"
+                    >
+                      SSD - Kabum
+                    </a>
+                  </li>
+                  <li>
+                    <p class="font-semibold">Placa de Video:</p>
+                    1x Placa de Vídeo RX 6600 CLD 8G ASRock AMD Radeon, 8GB,
+                    GDDR6 - 90-GA2RZZ-00UANF
+                    <br />
+                    <p class="font-semibold">COMPRE SEPARADO:</p>
+                    <a
+                      class="text-[#2a3da4] font-medium hover:underline"
+                      href="#"
+                    >
+                      Placa de video - Amazon
+                    </a>
+                  </li>
+                  <li>
+                    <p class="font-semibold">Fonte:</p>
+                    1x Fonte MSI MAG A600DN, 600W, 80 Plus White, PFC Ativo, Com
+                    Cabo, Preto - 306-7ZP6B22-809
+                    <br />
+                    <p class="font-semibold">COMPRE SEPARADO:</p>
+                    <a
+                      class="text-[#2a3da4] font-medium hover:underline"
+                      href="#"
+                    >
+                      Fonte - Kabum
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <p class="font-semibold">CABO HDMI:</p>
+                1x Cabo Hdmi Pichau 1.8m, 5001-1a
+                <br />
+                <p class="font-semibold">COMPRE SEPARADO:</p>
+                <a class="text-[#2a3da4] font-medium hover:underline" href="#">
+                  Cabo hdmi - Amazon
+                </a>
+              </li>
+              <li>
+                <p class="font-semibold">CABO DE FORÇA:</p>
+                1x 1 x Cabo de Força Pichau 1.2m, 3 Pinos, Vermelho, PG-PWC-RD01
+                <br />
+                <p class="font-semibold">COMPRE SEPARADO:</p>
+                <a class="text-[#2a3da4] font-medium hover:underline" href="#">
+                  Cabo de força - Amazon
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="w-full h-[600px] p-5 flex justify-center" id="sessao2">
+      <div
+        class="w-full p-5 justify-between items-center flex flex-row space-x-10 overflow-clip overflow-x-auto cursor-grab"
+      >
+        <div
+          class="flex flex-row justify-between space-x-10 overflow-x-visible"
+        >
+          <div
+            class="w-96 border-[#2a3da4] border-4 rounded-xl relative flex hover:scale-110"
+          >
+            <img src="../images/image-1-gamer.png" alt="" class="w-full" />
+            <p
+              class="w-full text-white font-bold text-xl text-center self-end absolute p-3"
+              style="text-shadow: 1px 4px 4px #ff00b8"
+            >
+              Setup Gamer
+            </p>
+          </div>
+          <div
+            class="w-96 border-[#2a3da4] border-4 rounded-xl relative flex hover:scale-110"
+          >
+            <img src="../images/image-2-gamer.png" alt="" class="w-full" />
+            <p
+              class="w-full text-white font-bold text-xl text-center self-end absolute p-3"
+              style="text-shadow: 1px 4px 4px #ff00b8"
+            >
+              Setup Gamer
+            </p>
+          </div>
+          <div
+            class="w-96 border-[#2a3da4] border-4 rounded-xl relative flex hover:scale-110"
+          >
+            <img src="../images/image-3-gamer.png" alt="" class="w-full" />
+            <p
+              class="w-full text-white font-bold text-xl text-center self-end absolute p-3"
+              style="text-shadow: 1px 4px 4px #ff00b8"
+            >
+              Setup Gamer
+            </p>
+          </div>
+          <div
+            class="w-96 border-[#2a3da4] border-4 rounded-xl relative flex hover:scale-110"
+          >
+            <img src="../images/image-4-gamer.png" alt="" class="w-full" />
+            <p
+              class="w-full text-white font-bold text-xl text-center self-end absolute p-3"
+              style="text-shadow: 1px 4px 4px #ff00b8"
+            >
+              Setup Gamer
+            </p>
+          </div>
+          <div
+            class="w-96 border-[#2a3da4] border-4 rounded-xl relative flex hover:scale-110"
+          >
+            <img src="../images/image-5-gamer.png" alt="" class="w-full" />
+            <p
+              class="w-full text-white font-bold text-xl text-center self-end absolute p-3"
+              style="text-shadow: 1px 4px 4px #ff00b8"
+            >
+              Setup Gamer
+            </p>
+          </div>
+          <div
+            class="w-96 border-[#2a3da4] border-4 rounded-xl relative flex hover:scale-110"
+          >
+            <img src="../images/image-6-gamer.png" alt="" class="w-full" />
+            <p
+              class="w-full text-white font-bold text-xl text-center self-end absolute p-3"
+              style="text-shadow: 1px 4px 4px #ff00b8"
+            >
+              Setup Gamer
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      class="w-full bg-[#2A3DA4] h-fit m-0 flex flex-col text-white gap-2"
+    >
+      <div class="flex gap-2 items-center">
+        <h1 class="font-extrabold mx-3 my-2 text-[23px]">LR INFORMÁTICA</h1>
+      </div>
+      <div class="flex flex-row">
+        <div class="w-1/4 h-full flex flex-col">
+          <div class="flex flex-row gap-3 mx-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-phone"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+              />
+            </svg>
+            <p>
+              (69) 9 9354-2265 <br />
+              (69) 9 0000-0000
+            </p>
+          </div>
+          <div class="flex flex-row gap-3 mx-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-mail"
+            >
+              <rect width="20" height="16" x="2" y="4" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+            <p>leyukezer.c@estudante.ifro.edu.br</p>
+          </div>
+        </div>
+        <div class="w-1/4">
+          <a
+            href="../pages/sobreNos.html"
+            class="font-semibold hover:underline hover:decoration-white hover:decoration-1"
+            >SOBRE NÓS</a
+          >
+        </div>
+        <div class="w-1/4">
+          <a
+            href="../pages/perifericos.html"
+            class="font-semibold hover:underline hover:decoration-white hover:decoration-1"
+            >PERIFÉRICOS</a
+          >
+        </div>
+        <div class="w-1/4 flex justify-end">
+          <div class="mr-10 flex flex-row gap-5 items-start">
+            <a href="#" class="w-8">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 26 26"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-instagram mt-1"
+              >
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg>
+            </a>
+            <!-- icon whatsapp -->
+            <a href="#" class="w-10">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 300 300"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="p-0"
+              >
+                <path
+                  d="M128.00049,28A100.02594,100.02594,0,0,0,41.11475,177.53908l-9.0044,31.51661a11.99971,11.99971,0,0,0,14.835,14.834l31.5166-9.00391A100.00677,100.00677,0,1,0,128.00049,28Zm0,192a91.87082,91.87082,0,0,1-46.95264-12.86719,3.99494,3.99494,0,0,0-3.14355-.4082l-33.15723,9.47363a3.99979,3.99979,0,0,1-4.94434-4.94531l9.47266-33.15625a4.00111,4.00111,0,0,0-.4082-3.14355A92.01077,92.01077,0,1,1,128.00049,220Zm50.51123-73.457-20.45947-11.69141a12.01054,12.01054,0,0,0-12.12745.12891l-13.80664,8.28418a44.04183,44.04183,0,0,1-19.38232-19.38281l8.28369-13.80664a12.0108,12.0108,0,0,0,.12891-12.127l-11.69092-20.46A10.91584,10.91584,0,0,0,100,72a32.00811,32.00811,0,0,0-32,31.88086A84.001,84.001,0,0,0,151.999,188h.12012A32.00842,32.00842,0,0,0,184,156,10.913,10.913,0,0,0,178.51172,146.543ZM152.10791,180h-.1084A75.99972,75.99972,0,0,1,76,103.8926,23.997,23.997,0,0,1,100,80a2.89975,2.89975,0,0,1,2.51172,1.457L114.20264,101.918a4.00418,4.00418,0,0,1-.043,4.042l-9.38916,15.64844a3.9987,3.9987,0,0,0-.21826,3.69824,52.04112,52.04112,0,0,0,26.1416,26.1416,3.99707,3.99707,0,0,0,3.69873-.21875L150.04,141.84084a4.006,4.006,0,0,1,4.043-.04394l20.46045,11.69238A2.89712,2.89712,0,0,1,176,156,23.99725,23.99725,0,0,1,152.10791,180Z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-0 m-0 flex justify-end">
+        <p class="text-[10px] mx-2">©LuanLeyukezerInterprises</p>
+      </div>
+    </footer>
+
+    <!-- Script JavaScript -->
+    <script src="/js/scripts.js"></script>
+  </body>
+</html>

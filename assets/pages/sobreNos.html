@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lr Informática</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../images/titlePageicon.png"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Inportação e configuração da fonte Inter -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100 font-inter transition-all">
+    <!-- Navbar -->
+    <nav
+      class="bg-[#2A3DA4] py-0 px-3 flex flex-row gap-32 max-[1000px]:gap-16 w-full justify-between items-center"
+    >
+      <!-- Botão para abrir o offcanvas -->
+      <div class="flex flex-row items-center gap-8">
+        <button id="openCanvas" class="text-white focus:outline-none">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-menu w-8 h-10"
+          >
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="18" y2="18" />
+          </svg>
+        </button>
+        <img
+          src="../images/titlePage.png"
+          class="w-full p-0 m-0"
+          onclick="window.location.href='/index.html';"
+        />
+      </div>
+      <div class="w-full text-[#2A3DA4] flex justify-center">
+        <div
+          class="relative flex flex-row items-center w-[480px] max-[1000px]:w-full"
+        >
+          <input
+            class="rounded h-8 pl-6 pr-8 text-xs w-full"
+            type="search"
+            value=""
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-search absolute right-2 shadow-black shadow-xl"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+        </div>
+        <!-- icon favorite-->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="white"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-heart self-center w-8 h-8 ml-3 hover:stroke-[#F9531F] hover:fill-[#F9531F]"
+          onclick="window.location.href='/pages/favorites.html';"
+        >
+          <path
+            d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+          />
+        </svg>
+      </div>
+      <div class="flex flex-row justify-center gap-5 text-white">
+        <!--icon carrinho/Shop -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="white"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-shopping-cart w-8"
+        >
+          <circle cx="8" cy="21" r="1" />
+          <circle cx="19" cy="21" r="1" />
+          <path
+            d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"
+          />
+        </svg>
+        <!-- icon user -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="white"
+          stroke="#ffffff"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-user-round w-10 border-2 border-white rounded-full p-1"
+        >
+          <circle cx="12" cy="8" r="5" />
+          <path d="M20 21a8 8 0 0 0-16 0" />
+        </svg>
+      </div>
+    </nav>
+
+    <!-- Overlay (escurecimento de fundo) -->
+    <div
+      id="overlay"
+      class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"
+    ></div>
+
+    <!-- Offcanvas -->
+    <div
+      id="offcanvas"
+      class="fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-[#2A3DA4] to-transparent shadow-lg transform -translate-x-full transition-transform z-50"
+    >
+      <div class="p-4">
+        <div class="flex flex-row gap-12">
+          <button id="closeCanvas" class="text-white focus:outline-none">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              class="bi bi-arrow-left w-8"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M15 8a.5.5 0 0 1-.5.5H4.707l3.147 3.146a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L4.707 7.5H14.5A.5.5 0 0 1 15 8z"
+              />
+            </svg>
+          </button>
+          <button
+            class="bg-white w-2/3 text-[#2A3DA4] border-2 border-transparent font-semibold px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-transparent hover:text-white hover:border-white"
+            onclick="window.location.href='../pages/login.html';"
+          >
+            LOGIN
+          </button>
+        </div>
+
+        <!-- Itens do menu -->
+        <ul class="mt-6">
+          <li>
+            <a
+              href="../index.html"
+              class="block m-2 p-1 bg-white text-[#2A3DA4] border-2 border-transparent font-semibold px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-transparent hover:text-white hover:border-white"
+              >PAGINA INICIAL</a
+            >
+          </li>
+          <li>
+            <a
+              href="../pages/favorites.html"
+              class="block m-2 p-1 bg-white text-[#2A3DA4] border-2 border-transparent font-semibold px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-transparent hover:text-white hover:border-white"
+              >FAVORITOS</a
+            >
+          </li>
+          <li>
+            <a
+              href="../pages/sobreNos.html"
+              class="block m-2 p-1 bg-white text-[#2A3DA4] border-2 border-transparent font-semibold px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-transparent hover:text-white hover:border-white"
+              >SOBRE NÓS</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <section
+      class="w-full h-fit flex flex-col justify-center items-center"
+      id="sessao1"
+    >
+      <p class="font-bold text-2xl text-[#2A3DA4] self-start p-5">
+        SOBRE A LR INFORMÁTICA
+      </p>
+      <p class="font-medium text-lg text-pretty w-3/4 text-justify">
+        Nós entendemos que cada gamer busca a performance máxima em seus jogos,
+        e acreditamos que um setup perfeito é a chave para alcançar esse
+        objetivo. Foi por isso que criamos a LR INFORMÁTICA para oferecer a você
+        uma experiência de jogo imersiva e poderosa, com setups completos
+        projetados para maximizar sua performance. Na LR INFORMÁTICA, nosso foco
+        é simples: entregar setups completos e de alta qualidade para gamers que
+        não aceitam nada menos que o melhor. Cada produto que oferecemos é
+        meticulosamente montado, testado e configurado para garantir que você
+        tenha a melhor experiência desde o momento em que liga seu novo
+        equipamento. Nós não vendemos peças soltas. Sabemos que montar um setup
+        do zero pode ser complicado, e nosso objetivo é simplificar esse
+        processo para você.
+        <br />
+        Oferecemos pacotes completos que incluem tudo o que você precisa: desde
+        o PC gamer de alta performance até os periféricos essenciais, como
+        monitores, teclados, mouses e cadeiras ergonômicas. Nós nos dedicamos a
+        oferecer setups que atendam às necessidades de todos os perfis de
+        gamers, desde os casuais até os profissionais. Trabalhamos com marcas
+        renomadas e componentes de última geração para garantir que você tenha a
+        potência e a confiabilidade que merece. Mais do que vender setups, nossa
+        missão é ajudar você a elevar seu nível de jogo. Com suporte
+        especializado e assistência personalizada, estamos aqui para garantir
+        que seu novo equipamento esteja pronto para vencer qualquer desafio.
+      </p>
+      <ul
+        class="p-5 list-image-[url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNoZWNrLWNoZWNrIj48cGF0aCBkPSJNMTggNiA3IDE3bC01LTUiLz48cGF0aCBkPSJtMjIgMTAtNy41IDcuNUwxMyAxNiIvPjwvc3ZnPg==)]"
+      >
+        <li class="text-wrap text-justify font-medium">
+          <p class="font-bold">Setups Completos:</p>
+          Escolha entre uma variedade de configurações pré-definidas ou
+          personalize seu setup completo com a ajuda de nossos especialistas.
+        </li>
+        <li class="text-wrap text-justify font-medium">
+          <p class="font-bold">Qualidade Garantida:</p>
+          Testamos cada componente antes de enviar para você, garantindo que
+          tudo funcione perfeitamente ao sair da caixa.
+        </li>
+        <li class="text-wrap text-justify font-medium">
+          <p class="font-bold">Experiência Gamer:</p>
+          Todos os nossos setups são desenvolvidos com o jogador em mente,
+          otimizados para oferecer a melhor experiência possível.
+        </li>
+        <li class="text-wrap text-justify font-medium">
+          <p class="font-bold">Suporte Especializado:</p>
+          Nossa equipe de atendimento está sempre disponível para ajudar com
+          dúvidas e garantir que seu setup esteja funcionando como deve.
+        </li>
+      </ul>
+      <div
+        class="flex flex-col w-1/2 justify-center items-center m-5 p-5 bg-gray-200 rounded-lg"
+      >
+        <p class="font-bold text-wrap p-2">
+          Quer saber mais sobre como podemos ajudar a elevar seu jogo?
+        </p>
+        <p class="font-medium text-wrap p-2">
+          Entre em contato conosco, e ficaremos felizes em montar o setup dos
+          seus sonhos.
+        </p>
+        <button
+          class="w-4/6 h-12 bg-[#2A3DA4] text-white rounded-md hover:bg-transparent hover:border-[#2A3DA4] hover:border-4 hover:text-[#2A3DA4] hover:font-bold"
+        >
+          ENTRAR EM CONTATO
+        </button>
+      </div>
+    </section>
+
+    <footer
+      class="w-full bg-[#2A3DA4] h-fit m-0 flex flex-col text-white gap-2"
+    >
+      <div class="flex gap-2 items-center">
+        <h1 class="font-extrabold mx-3 my-2 text-[23px]">LR INFORMÁTICA</h1>
+      </div>
+      <div class="flex flex-row">
+        <div class="w-1/4 h-full flex flex-col">
+          <div class="flex flex-row gap-3 mx-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-phone"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+              />
+            </svg>
+            <p>
+              (69) 9 9354-2265 <br />
+              (69) 9 0000-0000
+            </p>
+          </div>
+          <div class="flex flex-row gap-3 mx-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-mail"
+            >
+              <rect width="20" height="16" x="2" y="4" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+            <p>leyukezer.c@estudante.ifro.edu.br</p>
+          </div>
+        </div>
+        <div class="w-1/4">
+          <a
+            href="../pages/sobreNos.html"
+            class="font-semibold underline hover:decoration-white hover:decoration-1"
+            >SOBRE NÓS</a
+          >
+        </div>
+        <div class="w-1/4">
+          <a
+            href="../pages/perifericos.html"
+            class="font-semibold hover:underline hover:decoration-white hover:decoration-1"
+            >PERIFÉRICOS</a
+          >
+        </div>
+        <div class="w-1/4 flex justify-end">
+          <div class="mr-10 flex flex-row gap-5 items-start">
+            <a href="#" class="w-8">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 26 26"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-instagram mt-1"
+              >
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg>
+            </a>
+            <!-- icon whatsapp -->
+            <a href="#" class="w-10">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 300 300"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="p-0"
+              >
+                <path
+                  d="M128.00049,28A100.02594,100.02594,0,0,0,41.11475,177.53908l-9.0044,31.51661a11.99971,11.99971,0,0,0,14.835,14.834l31.5166-9.00391A100.00677,100.00677,0,1,0,128.00049,28Zm0,192a91.87082,91.87082,0,0,1-46.95264-12.86719,3.99494,3.99494,0,0,0-3.14355-.4082l-33.15723,9.47363a3.99979,3.99979,0,0,1-4.94434-4.94531l9.47266-33.15625a4.00111,4.00111,0,0,0-.4082-3.14355A92.01077,92.01077,0,1,1,128.00049,220Zm50.51123-73.457-20.45947-11.69141a12.01054,12.01054,0,0,0-12.12745.12891l-13.80664,8.28418a44.04183,44.04183,0,0,1-19.38232-19.38281l8.28369-13.80664a12.0108,12.0108,0,0,0,.12891-12.127l-11.69092-20.46A10.91584,10.91584,0,0,0,100,72a32.00811,32.00811,0,0,0-32,31.88086A84.001,84.001,0,0,0,151.999,188h.12012A32.00842,32.00842,0,0,0,184,156,10.913,10.913,0,0,0,178.51172,146.543ZM152.10791,180h-.1084A75.99972,75.99972,0,0,1,76,103.8926,23.997,23.997,0,0,1,100,80a2.89975,2.89975,0,0,1,2.51172,1.457L114.20264,101.918a4.00418,4.00418,0,0,1-.043,4.042l-9.38916,15.64844a3.9987,3.9987,0,0,0-.21826,3.69824,52.04112,52.04112,0,0,0,26.1416,26.1416,3.99707,3.99707,0,0,0,3.69873-.21875L150.04,141.84084a4.006,4.006,0,0,1,4.043-.04394l20.46045,11.69238A2.89712,2.89712,0,0,1,176,156,23.99725,23.99725,0,0,1,152.10791,180Z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-0 m-0 flex justify-end">
+        <p class="text-[10px] mx-2">©LuanLeyukezerInterprises</p>
+      </div>
+    </footer>
+
+    <!-- Script JavaScript -->
+    <script src="/js/scripts.js"></script>
+  </body>
+</html>
