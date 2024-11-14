@@ -7,4 +7,10 @@ export class AppController {
   home() {
     return {};
   }
+
+  @Get('/login')
+  @Render('login')
+  login() {
+    return {};
+  }
 }

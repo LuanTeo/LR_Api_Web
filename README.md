@@ -1,4 +1,22 @@
 <p align="center">
+  <a href="#" target="blank"><img src="./public/images/titlePage.png" width="200" alt="LR Logo" /></a>
+</p>
+
+# Aplicação Web - LR TECNOLOGIA
+## _Aplicação web para Vendas de setups completos_
+Aplicação desenvolvida para Disciplina de Programação Web.
+
+### Integrantes: <a href="#" target="blank">Leyukezer Cruz de Lima</a>, <a href="#" target="blank">Luan Mateus..</a>.
+
+
+## Tecnologias
+- [HTML/CSS] - 
+- [Handlebars] - 
+- [Javascript/Typescript] -
+- [NodeJs] - 
+- [Typeorm] - 
+
+<p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
