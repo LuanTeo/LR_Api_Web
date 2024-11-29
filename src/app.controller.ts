@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Controller, Get, Render } from '@nestjs/common';
 
 @Controller()
@@ -7,10 +8,9 @@ export class AppController {
   home() {
     return {};
   }
-
-  @Get('/login')
-  @Render('login')
-  login() {
+  @Get('/users')
+  @Render('users/index')
+  user() {
     return {};
   }
 }

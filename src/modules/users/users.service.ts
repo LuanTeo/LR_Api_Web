@@ -1,10 +1,9 @@
-// src/users/users.service.ts
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class UsersService {
   private readonly users: any[];
-
   constructor() {
     this.users = [
       {
