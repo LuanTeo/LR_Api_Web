@@ -29,9 +29,14 @@
     class="fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-[#2A3DA4] to-transparent shadow-lg transform -translate-x-full transition-transform z-50">
     {{> offcanvas}}
   </div>
-  <div>
-    {{> content}}
-  </div>
+
+  <section
+      class="w-full h-screen flex flex-col justify-start items-center mt-28"
+      id="sessao1"
+    >
+      {{> content}}
+  </section>
+
   <footer class="w-full bg-[#2A3DA4] h-fit m-0 flex flex-col text-white gap-2">
     {{> footer}}
   </footer>

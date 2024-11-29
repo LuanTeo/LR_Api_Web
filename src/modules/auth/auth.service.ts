@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 // src/auth/auth.service.ts
 import { Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';

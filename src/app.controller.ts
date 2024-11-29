@@ -8,9 +8,5 @@ export class AppController {
   home() {
     return {};
   }
-  @Get('/users')
-  @Render('users/index')
-  user() {
-    return {};
-  }
+
 }
