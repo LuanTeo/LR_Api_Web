@@ -7,7 +7,8 @@
       <div
         class="w-80 h-[550px] bg-gray-200 rounded-lg shadow-[0px_0px_15px_-5px_#2A3DA4]"
       >
-        <form>
+        <form action="/auth/login" method="post">
+              
           <div class="flex flex-col justify-center items-center my-8">
             <p
               class="p-2 text-xl font-bold text-[#2A3DA4]"
@@ -28,7 +29,13 @@
               <path d="M20 21a8 8 0 0 0-16 0" />
             </svg>
           </div>
+
           <div class="flex flex-col justify-center items-center gap-6 mt-5">
+            {{#if message }}
+                <a class="text-center text-red-600 text-sm p-2 rounded">
+                  {{ message }}
+                </a>
+              {{/if}}
             <input
               type="email"
               id="email"
@@ -50,7 +57,7 @@
                 class="w-3/4 h-4 flex justify-end items-end text-[#2A3DA4] font-bold text-xs hover:underline"
                 style="text-shadow: 0px 1px 3px #2a3da4"
               >
-                <a href="../pages/alterarSenha.html">esqueceu a senha?</a>
+                <a href="#">esqueceu a senha?</a>
               </div>
             </div>
           </div>
@@ -64,7 +71,7 @@
             <div class="flex gap-1 text-xs mt-2 text-[#2A3DA4]">
               <p class="font-semibold">Novo na LR?</p>
               <a
-                href="#"
+                href="/auth/register"
                 class="font-bold hover:underline"
                 style="text-shadow: 0px 1px 3px #2a3da4"
                 >CADASTRE-SE</a

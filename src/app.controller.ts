@@ -9,4 +9,10 @@ export class AppController {
     return {};
   }
 
+  @Get('/about')
+  @Render('about')
+  about() {
+    return {};
+  }
+
 }
