@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
+import { IsEmail } from 'class-validator';
 
 @Injectable()
 export class UsersService {
@@ -29,5 +30,16 @@ export class UsersService {
 
   async findOne(username: string): Promise<any> {
     return this.users.find(user => user.username === username);
+  }
+
+  getAll(){
+    return [
+      {
+        nome: 'Luan Mateus',
+        email:'luanmateus2002@gmail.com',
+        cpf:'111.111.111-11',
+
+      }
+    ]
   }
 }

@@ -1,108 +1,119 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lr Informática</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/public/images/titlePageicon.png"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lr Informática</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/public/images/titlePageicon.png" />
+    <!-- Inportação e configuração da fonte Inter -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Inportação e configuração da fonte Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Importação do tailwind-->
+    <!--<link href="/public/css/styles.css" rel="stylesheet">-->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
 
-  <!-- Importação do tailwind-->
-  <!--<link href="/public/css/styles.css" rel="stylesheet">-->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-</head>
-
-<body class="bg-gray-100 font-inter transition-all">
-  <!-- Navbar -->
-  <nav class="bg-[#2A3DA4] py-0 px-3 flex flex-row gap-32 max-[1000px]:gap-16 w-full justify-between items-center">
-    {{> navbar}}
-  </nav>
-
-  <!-- Overlay (escurecimento de fundo) -->
-  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
-
-  <div id="offcanvas"
-    class="fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-[#2A3DA4] to-transparent shadow-lg transform -translate-x-full transition-transform z-50">
-    {{> offcanvas}}
-  </div>
-
-  <section
-      class="w-full h-screen flex flex-col justify-start items-center mt-28"
-      id="sessao1"
+  <body class="bg-gray-100 font-inter transition-all">
+    <!-- Navbar -->
+    <nav
+      class="bg-[#2A3DA4] py-0 px-3 flex flex-row gap-32 max-[1000px]:gap-16 w-full justify-between items-center"
     >
+      {{> navbar}}
+    </nav>
+
+    <!-- Overlay (escurecimento de fundo) -->
+    <div
+      id="overlay"
+      class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"
+    ></div>
+
+    <div
+      id="offcanvas"
+      class="fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-[#2A3DA4] to-transparent shadow-lg transform -translate-x-full transition-transform z-50"
+    >
+      {{> offcanvas}}
+    </div>
+
+    <section id="sessao1">
       {{> content}}
-  </section>
+    </section>
 
-  <footer class="w-full bg-[#2A3DA4] h-fit m-0 flex flex-col text-white gap-2">
-    {{> footer}}
-  </footer>
+    <footer
+      class="w-full bg-[#2A3DA4] h-fit m-0 flex flex-col text-white gap-2"
+    >
+      {{> footer}}
+    </footer>
 
-  <!-- Script JavaScript -->
-  <script>
-  const openCanvasButton = document.getElementById("openCanvas");
-const closeCanvasButton = document.getElementById("closeCanvas");
-const offcanvas = document.getElementById("offcanvas");
-const overlay = document.getElementById("overlay");
-// Função para abrir o offcanvas
-openCanvasButton.addEventListener("click", () => {
-  offcanvas.classList.remove("-translate-x-full");
-  overlay.classList.remove("hidden");
-});
+    <!-- Script JavaScript -->
+    <script>
+      const openCanvasButton = document.getElementById('openCanvas');
+      const closeCanvasButton = document.getElementById('closeCanvas');
+      const offcanvas = document.getElementById('offcanvas');
+      const overlay = document.getElementById('overlay');
+      // Função para abrir o offcanvas
+      openCanvasButton.addEventListener('click', () => {
+        offcanvas.classList.remove('-translate-x-full');
+        overlay.classList.remove('hidden');
+      });
 
-// Função para fechar o offcanvas
-closeCanvasButton.addEventListener("click", () => {
-  offcanvas.classList.add("-translate-x-full");
-  overlay.classList.add("hidden");
-});
+      // Função para fechar o offcanvas
+      closeCanvasButton.addEventListener('click', () => {
+        offcanvas.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+      });
 
-// Fechar o offcanvas ao clicar no overlay
-overlay.addEventListener("click", () => {
-  offcanvas.classList.add("-translate-x-full");
-  overlay.classList.add("hidden");
-});
+      // Fechar o offcanvas ao clicar no overlay
+      overlay.addEventListener('click', () => {
+        offcanvas.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+      });
 
-const carousel = document.getElementById("carousel");
-const totalSlides = carousel.children.length;
-let currentSlide = 0;
+      const carousel = document.getElementById('carousel');
+      const totalSlides = carousel.children.length;
+      let currentSlide = 0;
 
-// Função para mover o carrossel para o slide desejado
-function moveToSlide(slideIndex) {
-  const offset = -slideIndex * 100; // Move o carrossel pela largura dos slides
-  carousel.style.transform = `translateX(${offset}%)`;
-}
+      // Função para mover o carrossel para o slide desejado
+      function moveToSlide(slideIndex) {
+        const offset = -slideIndex * 100; // Move o carrossel pela largura dos slides
+        carousel.style.transform = `translateX(${offset}%)`;
+      }
 
-// Botão para o slide anterior
-document.getElementById("prevButton").addEventListener("click", () => {
-  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-  moveToSlide(currentSlide);
-  resetAutoSlide(); // Reinicia o temporizador
-});
+      // Botão para o slide anterior
+      document.getElementById('prevButton').addEventListener('click', () => {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        moveToSlide(currentSlide);
+        resetAutoSlide(); // Reinicia o temporizador
+      });
 
-// Botão para o próximo slide
-document.getElementById("nextButton").addEventListener("click", () => {
-  currentSlide = (currentSlide + 1) % totalSlides;
-  moveToSlide(currentSlide);
-  resetAutoSlide(); // Reinicia o temporizador
-});
+      // Botão para o próximo slide
+      document.getElementById('nextButton').addEventListener('click', () => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        moveToSlide(currentSlide);
+        resetAutoSlide(); // Reinicia o temporizador
+      });
 
-// Mudança automática de slides
-function autoSlide() {
-  currentSlide = (currentSlide + 1) % totalSlides;
-  moveToSlide(currentSlide);
-}
+      // Mudança automática de slides
+      function autoSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        moveToSlide(currentSlide);
+      }
 
-let slideInterval = setInterval(autoSlide, 10000); // Troca de slide a cada 3 segundos
+      let slideInterval = setInterval(autoSlide, 10000); // Troca de slide a cada 3 segundos
 
-// Função para reiniciar o temporizador quando o usuário interage com o carrossel
-function resetAutoSlide() {
-  clearInterval(slideInterval); // Para o temporizador atual
-  slideInterval = setInterval(autoSlide, 8000); // Reinicia o temporizador
-}
-</script>
-</body>
-
+      // Função para reiniciar o temporizador quando o usuário interage com o carrossel
+      function resetAutoSlide() {
+        clearInterval(slideInterval); // Para o temporizador atual
+        slideInterval = setInterval(autoSlide, 8000); // Reinicia o temporizador
+      }
+    </script>
+  </body>
 </html>

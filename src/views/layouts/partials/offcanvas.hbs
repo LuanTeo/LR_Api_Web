@@ -1,43 +1,52 @@
 <!-- Offcanvas -->
-   
-      <div class="p-4">
-        <div class="flex flex-row gap-12">
-          <button id="closeCanvas" class="text-white focus:outline-none">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              class="bi bi-arrow-left w-8"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M15 8a.5.5 0 0 1-.5.5H4.707l3.147 3.146a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L4.707 7.5H14.5A.5.5 0 0 1 15 8z"
-              />
-            </svg>
-          </button>
-          <button
-            class="bg-white w-2/3 text-[#2A3DA4] border-2 border-transparent font-semibold px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-transparent hover:text-white hover:border-white"
-            onclick="window.location.href='auth/login';"
-          >
-            LOGIN
-          </button>
-        </div>
 
-        <!-- Itens do menu -->
-        <ul class="mt-6">
-          <li>
-            <a
-              href="/"
-              class="block m-2 p-1 bg-white text-[#2A3DA4] border-2 border-transparent font-semibold px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-transparent hover:text-white hover:border-white"
-              >PAGINA INICIAL</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block m-2 p-1 bg-white text-[#2A3DA4] border-2 border-transparent font-semibold px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-transparent hover:text-white hover:border-white"
-              >FAVORITOS</a
-            >
-          </li>
-        </ul>
-      </div>
+<div class="p-4">
+  <div class="flex flex-row gap-12">
+    <button id="closeCanvas" class="text-white focus:outline-none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        class="bi bi-arrow-left w-8"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M15 8a.5.5 0 0 1-.5.5H4.707l3.147 3.146a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L4.707 7.5H14.5A.5.5 0 0 1 15 8z"
+        />
+      </svg>
+    </button>
+    <button
+      class="bg-white w-2/3 text-[#2A3DA4] border-2 border-transparent font-semibold px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-transparent hover:text-white hover:border-white"
+      onclick="window.location.href='auth/login';"
+    >
+      LOGIN
+    </button>
+  </div>
+
+  <!-- Itens do menu -->
+  <ul class="mt-6">
+    <li>
+      <a
+        href="/"
+        class="block m-2 p-1 bg-white text-[#2A3DA4] border-2 border-transparent font-semibold px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-transparent hover:text-white hover:border-white"
+        >PAGINA INICIAL</a
+      >
+    </li>
+    <li>
+      <a
+        href="#"
+        class="block m-2 p-1 bg-white text-[#2A3DA4] border-2 border-transparent font-semibold px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-transparent hover:text-white hover:border-white"
+        >FAVORITOS</a
+      >
+    </li>
+    {{#if user}}
+    <li>
+      <a
+        href="#"
+        class="block m-2 p-1 bg-white text-[#2A3DA4] border-2 border-transparent font-semibold px-4 py-2 rounded-lg transition-colors duration-300 hover:bg-transparent hover:text-white hover:border-white"
+        >USUARIOS</a
+      >
+    </li>
+    {{/if}}
+  </ul>
+</div>

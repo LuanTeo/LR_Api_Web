@@ -26,7 +26,7 @@ export class AuthController {
   @UseGuards(LoginGuard)
   @Post('/login')
   login(@Res() res: Response) {
-    res.redirect('/home');
+    res.redirect('/auth/home');
   }
 
   @UseGuards(AuthenticatedGuard)
