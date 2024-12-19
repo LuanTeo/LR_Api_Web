@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
-import { PerifericosController } from './perifericos.controller';
+import { PeripheralController } from './peripheral.controller';
 import { PassportModule } from '@nestjs/passport';
 
 @Module({
     imports: [PassportModule],
-    controllers: [PerifericosController],
+    controllers: [PeripheralController],
 })
-export class PerifericosModule {}
+export class PeripheralModule {}

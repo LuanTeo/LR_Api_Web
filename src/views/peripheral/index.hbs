@@ -1,0 +1,40 @@
+{{#> main}}
+{{#*inline "content"}}
+<div class="w-full h-screen flex flex-col justify-start items-center mt-28">
+    <h2 class="text-3xl font-bold m-4 text-center">Periféricos</h2>
+    <div class="flex flex-row min-w-full justify-between items-center">
+
+    <div class="flex mb-4 ml-5">
+        <input type="text" placeholder="Buscar"
+            class="flex-1 p-2 w-[400px] border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <button class="p-2 bg-blue-500 text-white rounded-r-md">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                    d="M12.9 14.32a8 8 0 111.414-1.414l4.387 4.387a1 1 0 01-1.414 1.414l-4.387-4.387zM8 14a6 6 0 100-12 6 6 0 000 12z"
+                    clip-rule="evenodd" />
+            </svg>
+        </button>
+    </div>
+        <div class="p-4 w-4 h-2 justify-end mr-8 mb-3"> <a href="/peripheral/create"
+                class="bg-green-500 text-white font-bold text-xl p-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">
+                + </a>
+        </div>
+    </div>
+
+    <table class="min-w-full bg-white">
+        <thead>
+            <tr>
+                <th class="py-2 px-4 border-b">Nome</th>
+                <th class="py-2 px-4 border-b">Quant.</th>
+                <th class="py-2 px-4 border-b">Valor Unit.</th>
+                <th class="py-2 px-4 border-b">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Linhas da tabela serão inseridas aqui -->
+        </tbody>
+    </table>
+
+</div>
+{{/inline}}
+{{/main}}
