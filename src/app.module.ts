@@ -8,11 +8,13 @@ import { ComputerController } from './modules/computer/computer.controller';
 import { ComputerModule } from './modules/computer/computer.module';
 import { ComponentController } from './modules/component/component.controller';
 import { ComponentModule } from './modules/component/component.module';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
-  imports: [AuthModule, UsersModule, PeripheralModule, ComputerModule, ComponentModule],
+  imports: [AuthModule, UsersModule, PeripheralModule, ComputerModule, ComponentModule, DatabaseModule],
   controllers: [AppController, ComputerController, ComponentController],
   providers: [],
 })
+
 
 export class AppModule {}

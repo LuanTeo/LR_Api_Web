@@ -11,10 +11,10 @@ export const databaseProviders = [
         port: 3308,
         username: 'root',
         password: 'root',
-        database: 'tarefas_db',
+        database: 'lr_api_web',
         entities: [__dirname + '/../**/*.entity{.ts,.js}'],
         namingStrategy: new SnakeNamingStrategy(),
-        synchronize: true,
+        synchronize: false,
       });
 
       return dataSource.initialize();
