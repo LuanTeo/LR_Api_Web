@@ -1,45 +1,44 @@
-/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
-import { IsEmail } from 'class-validator';
+import { Usuario } from './users.entity';
 
 @Injectable()
 export class UsersService {
-  private readonly users: any[];
-  constructor() {
-    this.users = [
-      {
-        userId: 1,
-        username: 'john',
-        password: '12345',
-        pet: { name: 'alfred', picId: 1 },
-      },
-      {
-        userId: 2,
-        username: 'chris',
-        password: 'secret',
-        pet: { name: 'gopher', picId: 2 },
-      },
-      {
-        userId: 3,
-        username: 'maria',
-        password: 'guess',
-        pet: { name: 'jenny', picId: 3 },
-      },
-    ];
-  }
+    async getAll() {
+        return await Usuario.find({
+            order: { nome: 'ASC' }
+        });
+    }
 
-  async findOne(username: string): Promise<any> {
-    return this.users.find(user => user.username === username);
-  }
+    async findOne(username: string) {
+      return await Usuario.findOne({ where: { email: username } });
+  } 
 
-  getAll(){
-    return [
-      {
-        nome: 'Luan Mateus',
-        email:'luanmateus2002@gmail.com',
-        cpf:'111.111.111-11',
+    async findOneById(id: number) {
+        return await Usuario.findOne({ where: { id: id } });
+    }
 
-      }
-    ]
-  }
+    async create(dados: any) {
+        const usuario = Usuario.create({ ...dados });
+        return await usuario.save();
+    }
+
+    async update(id: number, dados: any) {
+        const usuario = await this.findOneById(id);
+
+        if (!usuario) {
+            return null;
+        }
+
+        return await Usuario.update(id, { ...dados });
+    }
+
+    async delete(id: number) {
+        const usuario = await this.findOneById(id);
+
+        if (!usuario) {
+            return null;
+        }
+
+        return await Usuario.delete(id);
+    }
 }
