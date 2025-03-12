@@ -83,8 +83,14 @@
       });
 
       const carousel = document.getElementById('carousel');
-      const totalSlides = carousel.children.length;
-      let currentSlide = 0;
+      if (carousel) {
+        const totalSlides = carousel.children.length;
+        let currentSlide = 0;
+      } else {
+        console.error('Voce nao esta na pagina inicial!');
+      }
+     
+      
 
       // Função para mover o carrossel para o slide desejado
       function moveToSlide(slideIndex) {
