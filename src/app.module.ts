@@ -9,9 +9,10 @@ import { ComputerModule } from './modules/computer/computer.module';
 import { ComponentController } from './modules/component/component.controller';
 import { ComponentModule } from './modules/component/component.module';
 import { DatabaseModule } from './database/database.module';
+import { CityModule } from './modules/city/city.module';
 
 @Module({
-  imports: [AuthModule, UsersModule, PeripheralModule, ComputerModule, ComponentModule, DatabaseModule],
+  imports: [AuthModule, UsersModule, PeripheralModule, ComputerModule, ComponentModule, DatabaseModule, CityModule],
   controllers: [AppController, ComputerController, ComponentController],
   providers: [],
 })
