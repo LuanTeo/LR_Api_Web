@@ -1,0 +1,23 @@
+/* eslint-disable prettier/prettier */
+import { PartialType } from "@nestjs/mapped-types";
+import { IsNotEmpty, MinLength, IsNumber, IsUrl } from "class-validator";
+
+export class SetupDto {
+    @IsNotEmpty({ message: 'O nome é obrigatório' })
+    @MinLength(5, { message: 'O nome deve ter no mínimo 5 caracteres' })
+    nome: string;
+
+    @IsNotEmpty({ message: 'A unidade é obrigatória' })
+    @IsNumber({}, { message: 'A unidade deve ser um número' })
+    unidade: number;
+
+    @IsNotEmpty({ message: 'O Valor é obrigatória' })
+    @IsNumber({}, { message: 'O Valor deve ser um número' })
+    valor: number;
+
+    @IsNotEmpty({ message: 'A imagem é obrigatória' })
+    @IsUrl({}, { message: 'A imagem deve conter um endereço válido' })
+    imagem: string;
+}
+
+export class SetupUpdateDto extends PartialType(SetupDto) { }

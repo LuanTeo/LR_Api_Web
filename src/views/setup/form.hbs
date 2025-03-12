@@ -1,0 +1,100 @@
+{{#> main}}
+{{#*inline "content"}}
+<div class="w-full h-screen flex flex-col justify-start items-center mt-28">
+  <h2 class="text-2xl font-bold mb-4">CADASTRO DE SETUP</h2>
+  <form class="grid grid-cols-1 gap-4" method="POST" action="/setup/create">
+  <!-- Espaço para a pré-visualização da imagem -->
+<div id="imagePreview" class="mt-4">
+  <img
+    id="previewImage"
+    src=""
+    alt="Pré-visualização da imagem"
+    class="w-full max-w-xs rounded-lg shadow-md hidden" <!-- Inicialmente oculto -->
+  />
+</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label for="nome" class="block text-sm font-medium text-gray-700">Nome*</label>
+        <input type="text" id="nome" name="nome"
+          class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required />
+      </div>
+      <div>
+        <label for="unidade" class="block text-sm font-medium text-gray-700">Quantidade*</label>
+        <input type="number" id="unidade" name="unidade"
+          class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required />
+      </div>
+    </div>
+      <!-- Campo para o link da imagem -->
+  <div>
+    <label for="imagem" class="block text-sm font-medium text-gray-700">Link da Imagem</label>
+    <input
+      type="url"
+      id="imagem"
+      name="imagem"
+      class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      placeholder="https://exemplo.com/imagem.jpg"
+      oninput="previewImage(this.value)"
+    />
+  </div>
+    <div>
+      <label for="descricao" class="block text-sm font-medium text-gray-700">Descrição</label>
+      <input type="text" id="descricao" name="descricao"
+        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    </div>
+    <div>
+      <label for="link" class="block text-sm font-medium text-gray-700">Link (URL)</label>
+      <input type="url" id="link" name="link"
+        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        required />
+    </div>
+    <div>
+      <label for="valor" class="block text-sm font-medium text-gray-700">Valor Unid.*</label>
+      <input  type="number" step="0.01" id="valor" name="valor"
+        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        required placeholder="R$" />
+    </div>
+
+     <!-- Seleção de Periféricos -->
+  <div>
+    <label for="peripherals" class="block text-sm font-medium text-gray-700">Periféricos</label>
+    <select
+      id="peripherals"
+      name="peripherals"
+      class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+      multiple
+    >
+      {{#each peripherals}}
+        <option value="{{this.id}}">{{this.nome}} - {{this.especificacao}}</option>
+      {{/each}}
+    </select>
+  </div>
+
+   <!-- Seleção de Computadores -->
+  <div>
+    <label for="computer" class="block text-sm font-medium text-gray-700">Periféricos</label>
+    <select
+      id="computer"
+      name="computer"
+      class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+      multiple
+    >
+      {{#each computers}}
+        <option value="{{this.id}}">{{this.nome}}</option>
+      {{/each}}
+    </select>
+  </div>
+    
+    <button type="submit"
+      class="mt-4 bg-[#2A3DA4] text-white font-bold p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+      CADASTRAR
+    </button>
+    <div class="m-2">
+      <a href="/setup" class="text-red-700 font-extrabold text-sm hover:underline">Cancelar</a>
+    </div>
+  </form>
+</div>
+</div>
+{{/inline}}
+{{/main}}

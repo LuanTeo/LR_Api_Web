@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
 import { Cidade } from '../city/city.entity';
+import { Favorito } from '../favorito/favorito.entity';
 
 @Entity('usuario')
 export class Usuario extends BaseEntity {
@@ -29,5 +30,13 @@ export class Usuario extends BaseEntity {
   datanasc?: Date;
 
   @ManyToOne(() => Cidade, (cidade) => cidade.usuarios)
+  @JoinColumn({ name: 'id_cid_fk' })
   cidade: Cidade;
+
+  @Column({ name: 'admin_usu', type: 'boolean', default: false }) // Define o valor padrão como "false"
+  admin: boolean;
+
+  @OneToMany(() => Favorito, (favorito) => favorito.usuario)
+  favoritos: Favorito;
+
 }

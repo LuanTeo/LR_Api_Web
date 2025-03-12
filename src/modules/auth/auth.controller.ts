@@ -14,11 +14,12 @@ import { AuthExceptionFilter } from 'src/common/filters/auth-exceptions.filter';
 import { AuthenticatedGuard } from 'src/common/guards/authenticated.guard';
 import { LoginGuard } from 'src/common/guards/login.guard';
 import { CityService } from 'src/modules/city/city.service';
+import { SetupService } from '../setup/setup.service';
 
 @Controller('auth')
 @UseFilters(AuthExceptionFilter)
 export class AuthController {
-  constructor(private readonly cityService: CityService) {}
+  constructor(private readonly cityService: CityService, private readonly setupService: SetupService) { }
   @Get('/login')
   @Render('auth/login')
   index(@Request() req): { message: string } {
@@ -34,8 +35,10 @@ export class AuthController {
   @UseGuards(AuthenticatedGuard)
   @Get('/home')
   @Render('home')
-  getHome(@Request() req) {
-    return { user: req.user };
+  async getHome(@Request() req) {
+    const top5Setups = await this.setupService.findTop5MaisCaros();
+    const setups = await this.setupService.getAll();
+    return { user: req.user, top5Setups, setups };
   }
 
   @UseGuards(AuthenticatedGuard)

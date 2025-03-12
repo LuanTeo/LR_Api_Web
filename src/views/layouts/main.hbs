@@ -29,6 +29,10 @@
     >
       {{> navbar}}
     </nav>
+    <!-- Menu ADM -->
+    <div class="bg-gray-100 border-[#2A3DA4] border-2 p-2 flex flex-row w-full justify-between items-start">
+      {{> header}}
+    </div>
 
     <!-- Overlay (escurecimento de fundo) -->
     <div
@@ -55,11 +59,12 @@
 
     <!-- Script JavaScript -->
     <script>
-      const openCanvasButton = document.getElementById('openCanvas');
+      {// Função para abrir o offcanvas
+        const openCanvasButton = document.getElementById('openCanvas');
       const closeCanvasButton = document.getElementById('closeCanvas');
       const offcanvas = document.getElementById('offcanvas');
       const overlay = document.getElementById('overlay');
-      // Função para abrir o offcanvas
+      
       openCanvasButton.addEventListener('click', () => {
         offcanvas.classList.remove('-translate-x-full');
         overlay.classList.remove('hidden');
@@ -114,6 +119,102 @@
         clearInterval(slideInterval); // Para o temporizador atual
         slideInterval = setInterval(autoSlide, 8000); // Reinicia o temporizador
       }
+      }
+
+      {// Função para buscar computadores
+
+  document.getElementById('buscarComputador').addEventListener('input', async (event) => {
+    const termo = event.target.value;
+    if (termo.length >= 3) { // Busca apenas após 3 caracteres
+      const response = await fetch(`/computador/buscar?termo=${termo}`);
+      const computadores = await response.json();
+      const resultadosDiv = document.getElementById('resultadosComputador');
+      resultadosDiv.innerHTML = computadores.map(computador => `
+        <div class="p-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100"
+             onclick="selecionarComputador(${JSON.stringify(computador)})">
+          ${computador.nome} - ${computador.especificacao}
+        </div>
+      `).join('');
+    } else {
+      document.getElementById('resultadosComputador').innerHTML = '';
+    }
+  });
+
+  // Função para selecionar um computador
+  function selecionarComputador(computador) {
+    const computadoresDiv = document.getElementById('computadores');
+    const novoComputador = document.createElement('div');
+    novoComputador.className = 'computador grid grid-cols-1 md:grid-cols-2 gap-4 mb-4';
+    novoComputador.innerHTML = `
+      <input type="text" name="computadores[${computadorCount}][nome]" value="${computador.nome}" required />
+      <input type="text" name="computadores[${computadorCount}][especificacao]" value="${computador.especificacao}" required />
+      <input type="number" step="0.01" name="computadores[${computadorCount}][valor]" value="${computador.valor}" required />
+      <input type="url" name="computadores[${computadorCount}][link]" value="${computador.link}" required />
+    `;
+    computadoresDiv.appendChild(novoComputador);
+    computadorCount++;
+    document.getElementById('resultadosComputador').innerHTML = ''; // Limpa os resultados
+  }
+
+  // Função para buscar periféricos
+  document.getElementById('buscarPeriferico').addEventListener('input', async (event) => {
+    const termo = event.target.value;
+    if (termo.length >= 3) { // Busca apenas após 3 caracteres
+      const response = await fetch(`/periferico/buscar?termo=${termo}`);
+      const perifericos = await response.json();
+      const resultadosDiv = document.getElementById('resultadosPeriferico');
+      resultadosDiv.innerHTML = perifericos.map(periferico => `
+        <div class="p-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100"
+             onclick="selecionarPeriferico(${JSON.stringify(periferico)})">
+          ${periferico.nome} - ${periferico.especificacao}
+        </div>
+      `).join('');
+    } else {
+      document.getElementById('resultadosPeriferico').innerHTML = '';
+    }
+  });
+
+  // Função para selecionar um periférico
+  function selecionarPeriferico(periferico) {
+    const perifericosDiv = document.getElementById('perifericos');
+    const novoPeriferico = document.createElement('div');
+    novoPeriferico.className = 'periferico grid grid-cols-1 md:grid-cols-2 gap-4 mb-4';
+    novoPeriferico.innerHTML = `
+      <input type="text" name="perifericos[${perifericoCount}][nome]" value="${periferico.nome}" required />
+      <input type="text" name="perifericos[${perifericoCount}][especificacao]" value="${periferico.especificacao}" required />
+      <input type="number" step="0.01" name="perifericos[${perifericoCount}][valor]" value="${periferico.valor}" required />
+      <input type="url" name="perifericos[${perifericoCount}][link]" value="${periferico.link}" required />
+    `;
+    perifericosDiv.appendChild(novoPeriferico);
+    perifericoCount++;
+    document.getElementById('resultadosPeriferico').innerHTML = ''; // Limpa os resultados
+  }
+
+  let computadorCount = 1;
+  let perifericoCount = 1;
+      }
+    
+      {// Função para apresentar imagem
+
+    function previewImage(imageUrl) {
+    const previewImageElement = document.getElementById('previewImage');
+
+      if (imageUrl) {
+        // Atualiza o src da imagem
+        previewImageElement.src = imageUrl;
+        // Exibe a imagem
+        previewImageElement.classList.remove('hidden');
+      } else {
+        // Oculta a imagem se o campo estiver vazio
+        previewImageElement.classList.add('hidden');
+      }
+    }
+  }
+    
+      {// Função para...
+
+      }
+
     </script>
   </body>
 </html>

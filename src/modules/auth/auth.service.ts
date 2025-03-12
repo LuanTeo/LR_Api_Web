@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // src/auth/auth.service.ts
 import { Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';

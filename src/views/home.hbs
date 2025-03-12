@@ -1,74 +1,71 @@
 {{#> main}}
   {{#*inline "content"}}
       <div class="flex flex-row w-full justify-stretch items-center">
-        <!-- Botões de Navegação -->
-        <div class="w-[10%] items-center justify-center content-center">
-          <button
-            id="prevButton"
-            class="w-full bg-transparent text-[#2A3DA4] font-extrabold text-[50px] p-4 focus:outline-none"
-          >
-            &#10094;
-            <!-- Ícone de seta para a esquerda -->
-          </button>
-        </div>
-        <div class="w-4/5 h-[] justify-center items-center content-center">
-          <!-- Container do Carrossel -->
-          <div
-            class="relative w-full max-h-[720px] max-[450px]:h-40 overflow-hidden rounded-xl shadow-[5px_5px_15px_10px] shadow-[#2A3DA4]"
-          >
-            <!-- Slides -->
-            <div id="carousel" class="flex transition-transform duration-700">
-              <!-- Slide 1 -->
-              <div class="w-full flex-shrink-0">
-                <img
-                  src="./images/quarto-gamer-03-1.png"
-                  alt="Slide 1"
-                  class="w-full h-full object-center"
-                />
-              </div>
-              <!-- Slide 2 -->
-              <div class="w-full flex-shrink-0">
-                <img
-                  src="./images/quarto-gamer-04-1536x864.jpg"
-                  alt="Slide 2"
-                  class="w-full h-full"
-                />
-              </div>
-              <!-- Slide 3 -->
-              <div class="w-full flex-shrink-0">
-                <img
-                  src="./images/quarto-gamer-19.jpg"
-                  alt="Slide 3"
-                  class="w-full max-h-full"
-                />
-              </div>
-              <!-- Slide 4 -->
-              <div class="w-full flex-shrink-0">
-                <img
-                  src="./images/quarto-gamer-06-1024x672.jpg"
-                  alt="Slide 4"
-                  class="w-full h-full"
-                />
-              </div>
-            </div>
+  <!-- Botões de Navegação -->
+  <div class="w-[10%] items-center justify-center content-center">
+    <button
+      id="prevButton"
+      class="w-full bg-transparent text-[#2A3DA4] font-extrabold text-[50px] p-4 focus:outline-none"
+    >
+      &#10094;
+      <!-- Ícone de seta para a esquerda -->
+    </button>
+  </div>
+  <div class="w-4/5 h-[] justify-center items-center content-center">
+    <!-- Container do Carrossel -->
+    <div
+      class="relative w-full max-h-[720px] max-[450px]:h-40 overflow-hidden rounded-xl shadow-[5px_5px_15px_10px] shadow-[#2A3DA4]"
+    >
+      <!-- Slides -->
+      <div id="carousel" class="flex transition-transform duration-700">
+        {{#each top5Setups}}
+          <!-- Slide Dinâmico -->
+          <div class="w-full flex-shrink-0">
+            <a href="setup/{{this.id}}">
+              <img
+              src="{{this.imagem}}"
+              alt="{{this.nome}}"
+              id="{{this.id}}"
+              class="w-full h-full object-cover"
+            />
+            </a>
           </div>
-        </div>
-        <!-- Botões de Navegação -->
-        <div class="w-[10%] items-center justify-center content-center">
-          <button
-            id="nextButton"
-            class="w-full bg-transparent text-[#2A3DA4] font-extrabold text-[50px] p-4 focus:outline-none"
-          >
-            &#10095;
-            <!-- Ícone de seta para a direita -->
-          </button>
-        </div>
+        {{/each}}
       </div>
-
+    </div>
+  </div>
+  <!-- Botões de Navegação -->
+  <div class="w-[10%] items-center justify-center content-center">
+    <button
+      id="nextButton"
+      class="w-full bg-transparent text-[#2A3DA4] font-extrabold text-[50px] p-4 focus:outline-none"
+    >
+      &#10095;
+      <!-- Ícone de seta para a direita -->
+    </button>
+  </div>
+</div>
       <hr
         class="w-11/12 border-[#2A3DA4] border-2 mt-6 self-center justify-self-center"
       />
 
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
+  {{#each setups}}
+    <div
+      class="w-full border-[#2a3da4] border-4 rounded-xl relative flex hover:scale-110 transition-transform duration-300 cursor-pointer"
+    >
+    <a href="setup/{{this.id}}">
+    <img src="{{this.imagem}}" alt="{{this.nome}}" class="w-full rounded-t-xl" />
+      <p
+        class="w-full text-white font-bold text-xl text-center self-end absolute p-3"
+        style="text-shadow: 1px 4px 4px #ff00b8"
+      >
+        {{this.nome}}
+      </p>
+    </a>
+    </div>
+  {{/each}}
+</div>
 
   {{/inline}}
 {{/main}}
